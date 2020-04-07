@@ -1,0 +1,1 @@
+web: gunicorn hltv_parser.hltv_parser.wsgi --log-file -

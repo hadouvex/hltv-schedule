@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import dj_database_url
 
+ON_HEROKU = True
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,16 +84,19 @@ WSGI_APPLICATION = 'hltv_parser.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+    
+DATABASES = {}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hltv_parser',
-        'USER': 'hltv_parser',
-        'PASSWORD': '101112',
-        'HOST': 'localhost'
-    }
-}
+if ON_HEROKU:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+else:
+    DATABASES['default'] = {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'hltv_parser',
+            'USER': 'hltv_parser',
+            'PASSWORD': '101112',
+            'HOST': 'localhost'
+        }
 
 
 # Password validation

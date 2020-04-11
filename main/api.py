@@ -15,7 +15,7 @@ parser = MatchParser()
 
 parser.format_data()
 
-parser_output = parser.pandas_df_to_json()
+parser_output = parser.get_dict()
 
 
 class MatchApi(APIView):

@@ -1,4 +1,3 @@
-import pandas as pd
 import requests
 import datetime
 import json
@@ -75,10 +74,8 @@ class MatchParser():
                 'index': index, 'date_cet': date_cet, 'date_msc': date_msc, 'team_a': team_a, 'team_b': team_b, 'event': event, 'match_type': match_type})
 
 
-    def pandas_df_to_json(self):
-        df = pd.DataFrame(self.final_match_list)
-        formatted_dict = df.to_dict(orient='records')
-        return formatted_dict
+    def get_dict(self):
+        return self.final_match_list 
 
 
 if __name__ == "__main__":

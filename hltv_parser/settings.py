@@ -15,7 +15,11 @@ import dj_database_url
 
 ON_HEROKU = True
 
-db_from_env = dj_database_url.config(conn_max_age=500)
+try:
+    from .local_settings import ON_HEROKU
+except:
+    pass
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -153,6 +157,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 
 try:
-    from .local_settings import *
+    from .local_settings import CORS_ORIGIN_WHITELIST, DEBUG
 except ImportError:
     pass

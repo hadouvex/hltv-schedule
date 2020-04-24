@@ -1,6 +1,8 @@
 import requests
 import datetime
-import json
+import time
+
+
 from bs4 import BeautifulSoup as bs
 
 
@@ -78,7 +80,15 @@ class MatchParser():
         return self.final_match_list 
 
 
+def parse():
+    print('Parser is running...\n')
+    parser = MatchParser()
+    parser.format_data()
+    print('Successfully parsed.\n')
+    return parser.get_dict()
+
+
 if __name__ == "__main__":
     parser = MatchParser()
     parser.format_data()
-    print(parser.pandas_df_to_json())
+    print(parser.get_dict())

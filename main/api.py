@@ -5,17 +5,13 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-from .pd_parse_html import *
+from .pd_parse_html import parse
 
 
 from .serializers import MatchListSerializer
 
 
-parser = MatchParser()
-
-parser.format_data()
-
-parser_output = parser.get_dict()
+parser_output = parse()
 
 
 class MatchApi(APIView):

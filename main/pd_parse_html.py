@@ -80,11 +80,16 @@ class MatchParser():
         return self.final_match_list 
 
 
-def parse():
-    print('Parser is running...\n')
+def parse(log_message=True):
+    if log_message:
+        print('Parser is running...\n')
+        parser = MatchParser()
+        parser.format_data()
+        print('Successfully parsed.\n')
+        return parser.get_dict()
+
     parser = MatchParser()
     parser.format_data()
-    print('Successfully parsed.\n')
     return parser.get_dict()
 
 

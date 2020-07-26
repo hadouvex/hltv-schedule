@@ -1,6 +1,6 @@
 # client
 
-> Front-end for a simple parser
+> Front-end for a simple scraper.
 
 ## Build Setup
 
